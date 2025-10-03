@@ -109,10 +109,15 @@ curl -s -X POST http://127.0.0.1:8000/predict   -H 'Content-Type: application/js
 Environment variables:
 
 | `OPENAI_API_KEY` | Enables GPT summarization | `sk-...` |
+
 | `SUMMARY_ENABLED` | `1` to use OpenAI, `0` to disable | `1` |
+
 | `SUMMARY_MODEL` | OpenAI model for summaries | `gpt-4o-mini` |
+
 | `BIAS_MODEL_NAME` | HF repo id or local path | `bucketresearch/politicalBiasBERT` |
+
 | `ALLSIDES_PRIORS_PATH` | Path to AllSides priors CSV | `./data/allsides_priors.csv` |
+
 | `DATA_DIR` | Data dir (defaults to `data`) | `data` |
 
 **AllSides CSV**  
