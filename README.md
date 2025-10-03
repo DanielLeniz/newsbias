@@ -126,9 +126,9 @@ CSV should include at least an outlet **name** (e.g., `source_name`) and **ratin
 2. **Summarize**: If OpenAI is enabled, call the summarization model; otherwise, return an extractive summary based off the first few sentences of the article.
 3. **Source prior**: Lookup outlet in the AllSides CSV by domain and/or name
 4. **Classify**: Tokenize and run the bias model. Compute softmax:
-   - `label` = argmax class (Left/Center/Right)
-   - `confidence` = top class probability
-   - `probs` = full per-class distribution
+   - `label` = Left/Center/Right
+   - `confidence` 
+   - `probs` = prob for each L/C/R
 5. **Explain**: Spans to show political phrasing
 
 ---
@@ -151,12 +151,9 @@ BIAS_MODEL_NAME=bucketresearch/politicalBiasBERT PYTHONPATH=. pytest -q
 ## Troubleshooting
 
 - **Summaries look like the first paragraph only**  
-  OpenAI off? Check `/env_debug`. If `summary_llm:false`, set `SUMMARY_ENABLED=1` and `OPENAI_API_KEY`.
+  Check `/env_debug`. If `summary_llm:false`, set `SUMMARY_ENABLED=1` and `OPENAI_API_KEY`
 
 - **`source_prior` is null**  
-  Ensure `ALLSIDES_PRIORS_PATH` points to your CSV and that the CSV has your outlet (by domain or name). Common domains are mapped to names (e.g., `foxnews.com → Fox News`). If still null, verify the CSV headers (e.g., `source_name`, `allsides_bias`).
-
-- **Model path errors**  
-  If using a local checkpoint, set `BIAS_MODEL_NAME=./checkpoints/<your-dir>`. For HF, use the repo id.
+  Ensure `ALLSIDES_PRIORS_PATH` points to your CSV and that the CSV has your outlet (by domain or name). Common domains are mapped to names (e.g., `foxnews.com → Fox News`). If still null, verify the CSV headers (e.g., `source_name`, `allsides_bias`)
 
 ---
