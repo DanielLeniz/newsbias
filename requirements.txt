@@ -4,6 +4,12 @@ python-dotenv==1.0.1
 requests==2.32.3
 tenacity==8.5.0
 pydantic==2.9.2
+trafilatura==2.0.0
+httpx==0.28.1
+readability==0.3.2
+readability-lxml==0.8.4.1
+tldextract==5.3.0
+hf_xet==1.1.10
 # Optional (enable if you plan to use transformers)
-# transformers==4.44.2
-# torch>=2.1.0
+transformers==4.44.2
+torch>=2.1.0
