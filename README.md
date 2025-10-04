@@ -5,6 +5,7 @@ Detects article-level political bias (Left/Center/Right), summarizes the article
 ## Quickstart
 ```bash
 python -m venv .venv && source .venv/bin/activate
+#.venv/Scripts/activate --might just be a me thing but don't have a bin folder activate is under Script
 pip install -r requirements.txt
 cp .env.example .env  # fill in keys
 uvicorn app.api:app --reload --port 8000
