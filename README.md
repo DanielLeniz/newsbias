@@ -27,6 +27,16 @@ curl -s -X POST http://127.0.0.1:8000/predict_url \
   -H 'Content-Type: application/json' \
   -d '{"url":"https://www.cnn.com/2025/10/02/politics/government-shutdown-political-crisis-analysis"}' | jq
   ```
+For Powershell Users run
+```bash
+$body = @{ url = "https://www.cnn.com/2025/10/02/politics/government-shutdown-political-crisis-analysis" } |
+         ConvertTo-Json
+
+Invoke-RestMethod -Method POST `
+  -Uri http://127.0.0.1:8000/predict_url `
+  -ContentType 'application/json' `
+  -Body $body | ConvertTo-Json -Depth 10
+```
 
 
 ## What it does
