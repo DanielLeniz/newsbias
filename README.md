@@ -80,8 +80,8 @@ Invoke-RestMethod -Method POST `
 ## Example usage
 
 ```bash
-# Extract only
-curl -s "http://127.0.0.1:8000/fetch?url=https://www.cnn.com/..." | jq
+# Extract the text only
+curl -s "http://127.0.0.1:8000/fetch?url=https://www.foxnews.com/us/harvard-faculty-expressed-support-potential-left-wing-political-violence-during-2018-panel" | jq
 
 # URL with full pipeline
 curl -s -X POST http://127.0.0.1:8000/predict_url   -H 'Content-Type: application/json'   -d '{"url":"https://www.foxnews.com/us/harvard-faculty-expressed-support-potential-left-wing-political-violence-during-2018-panel"}' | jq
@@ -99,16 +99,27 @@ curl -s -X POST http://127.0.0.1:8000/predict   -H 'Content-Type: application/js
   "bias": {
     "label": "Right",
     "confidence": 0.664,
-    "probs": { "Left": 0.181, "Center": 0.155, "Right": 0.664 }
+    "probs": {
+      "Left": 0.181,
+      "Center": 0.155,
+      "Right": 0.664
+    }
   },
   "explain": {
-    "spans": [ { "start": 20, "end": 30, "text": "bipartisan" } ]
+    "spans": [
+      {
+        "start": 20,
+        "end": 30,
+         "text": "bipartisan"
+      }
+    ]
   },
   "source_prior": {
-    "source": "CNN",
-    "domain": "cnn.com",
-    "rating": "Lean Left",
+    "source": "Fox News",
+    "domain": "foxnews.com",
+    "rating": "Right",
     "origin": "AllSides"
+    "notes": "Outlet generally right-leaning"
   }
 }
 ```
@@ -145,7 +156,7 @@ CSV should include at least an outlet **name** (e.g., `source_name`) and **ratin
    - `label` = Left/Center/Right
    - `confidence` 
    - `probs` = prob for each L/C/R
-5. **Explain**: Spans to show political phrasing
+5. **Explain**: Spans to show political phrasing within article
 
 ---
 
