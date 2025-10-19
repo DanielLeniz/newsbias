@@ -5,10 +5,9 @@ Detects article-level political bias (Left/Center/Right), summarizes the article
 ## Quickstart
 ```bash
 python -m venv .venv && source .venv/bin/activate
-#.venv/Scripts/activate --might just be a me thing but don't have a bin folder activate is under Script
+#.venv/Scripts/activate -- use this instead if .venv/bin/activate does not work with your machine
 pip install -r requirements.txt
-cp .env.example .env  # fill in keys
-uvicorn app.api:app --reload --port 8000
+cp .env.example .env  # fill in API keys
 ```
 
 ## Start server with hosted model
@@ -43,11 +42,11 @@ Invoke-RestMethod -Method POST `
 ## What it does
 
 - **Fetch** article text from a URL (`/fetch`, `/predict_url`)
-- **Summarize** with GPT (OpenAI) when enabled — falls back to extractive summary if not available
-- **Source prior** (optional): Look up the outlet’s AllSides media-bias rating (display only; does **not** affect the prediction)
+- **Summarize** with GPT (OpenAI) when enabled — falls back to extractive summary of the first few sentences if not available
+- **Source prior** (optional): Look up the outlet’s AllSides media-bias rating (display only; does **not** affect the bias rating)
 - **Article bias**: Run `bucketresearch/politicalBiasBERT` to predict **Left / Center / Right**
   - Returns `label`, `confidence`, and full per-class `probs`
-  - Adds important keywords
+  - Adds important keywords for user transparency -- **does not affect the model**
 
 
 ## Endpoints
