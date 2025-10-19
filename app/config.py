@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-# NEWSAPI_KEY = os.getenv("NEWSAPI_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 BIAS_MODEL_NAME = os.getenv("BIAS_MODEL_NAME", "")
 

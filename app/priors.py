@@ -21,6 +21,7 @@ DOMAIN_TO_NAME = {
     "cnn.com": "CNN",
     "foxnews.com": "Fox News",
     "apnews.com": "Associated Press",
+    "ap.org": "Associated Press",
     "associatedpress.com": "Associated Press",
     "nytimes.com": "New York Times",
     "wsj.com": "Wall Street Journal",
@@ -115,7 +116,7 @@ def get_prior_for_source(source_or_domain: str) -> Optional[Dict[str,str]]:
     if nm and nm in _PRIORS_BY_NAME:
         return _PRIORS_BY_NAME[nm]
 
-    # if it was a full URL and we didn't catch above
+    # if it was a full URL and we didn't catch it above
     if s.startswith("http"):
         dom2 = _norm_domain(s)
         if dom2 in _PRIORS_BY_DOMAIN:

@@ -100,7 +100,7 @@ def classify(text: str) -> Dict[str, Any]:
         }
 
     # encode
-    enc = tokenizer(text, truncation=True, max_length=256, return_tensors="pt")
+    enc = tokenizer(text, truncation=True, max_length=512, return_tensors="pt")
     enc = {k: v.to(DEVICE) for k, v in enc.items()}
 
     # forward

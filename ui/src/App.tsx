@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import "./app.css";
+// import "./App.css"; if needed depending on your machine
 
 const API = "http://127.0.0.1:8000";
 
@@ -19,7 +20,7 @@ export default function App() {
   const [health, setHealth] = useState<Health | null>(null);
   const [model, setModel] = useState<ModelMeta | null>(null);
   const [url, setUrl] = useState(
-    "https://www.cnn.com/2025/10/02/politics/government-shutdown-political-crisis-analysis"
+    "https://www.foxnews.com/live-news/anti-trump-no-kings-protests-october-18-2025"
   );
   const [result, setResult] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(false);
@@ -116,6 +117,20 @@ export default function App() {
               <strong>Error:</strong> {err}
             </div>
           )}
+
+          {result && (() => {
+            const arr = Array.isArray(result) ? result : [result];
+            const first = arr[0] as any;
+            const summary = first?.summary || first?.summary?.text; // if your field is nested
+            return summary ? (
+              <>
+                <h3 className="result-title">Summary</h3>
+                <div className="summary">{summary}</div>
+                <div className="divider" />
+              </>
+            ) : null;
+          })()}
+
 
           {result && (
             <>

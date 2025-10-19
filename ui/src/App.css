@@ -193,3 +193,14 @@ body {
 }
 .icon-btn:hover { background: #f1f5f9; }
 
+.summary {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 12px;
+}
+
+
