@@ -5,14 +5,15 @@ Detects article-level political bias (Left/Center/Right), summarizes the article
 ## Quickstart
 ```bash
 python -m venv .venv && source .venv/bin/activate
-#.venv/Scripts/activate -- use this instead if .venv/bin/activate does not work with your machine
+# python3 -m venv .venv -- use this if you have python3
+# .venv/Scripts/activate -- use this instead if .venv/bin/activate does not work with your machine
 pip install -r requirements.txt
 cp .env.example .env  # fill in API keys
 ```
 
 ## Start server with hosted model
 ```bash
-BIAS_MODEL_NAME=bucketresearch/politicalBiasBERT uvicorn app.api:app --reload --port 8000
+uvicorn app.api:app --reload --port 8000
 ```
 ## Health & model
 ```bash
@@ -21,15 +22,15 @@ curl -s http://127.0.0.1:8000/model | jq
 ```
 
 
-## Classify this CNN article
+## Classify this Fox News article
 ```bash
 curl -s -X POST http://127.0.0.1:8000/predict_url \
   -H 'Content-Type: application/json' \
-  -d '{"url":"https://www.cnn.com/2025/10/02/politics/government-shutdown-political-crisis-analysis"}' | jq
+  -d '{"url":"https://www.foxnews.com/live-news/anti-trump-no-kings-protests-october-18-2025"}' | jq
   ```
 For Powershell Users run
 ```bash
-$body = @{ url = "https://www.cnn.com/2025/10/02/politics/government-shutdown-political-crisis-analysis" } |
+$body = @{ url = "https://www.foxnews.com/live-news/anti-trump-no-kings-protests-october-18-2025" } |
          ConvertTo-Json
 
 Invoke-RestMethod -Method POST `
