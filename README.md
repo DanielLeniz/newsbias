@@ -1,8 +1,8 @@
 # News Bias
 ## Coding Contribution
-Robert Malloy - fine tuning BERT model
-Louis-Marie Mondesir - testing
-Daniel Leniz - API development
+- Robert Malloy - fine tuning BERT model
+- Louis-Marie Mondesir - testing
+- Daniel Leniz - API development
 Detects article-level political bias (Left/Center/Right), summarizes the article, and (optionally) displays a **source prior** from AllSides for context.
 
 ## Quickstart
