@@ -1,8 +1,8 @@
 # News Bias
 Detects article-level political bias (Left/Center/Right), summarizes the article, and (optionally) displays a **source prior** from AllSides for context.
 ## Coding Contribution
-- Robert Malloy - UI and fine tuning model
-- Louis-Marie Mondesir - testing
+- Robert Malloy - UI and testing
+- Louis-Marie Mondesir - fine tuning model
 - Daniel Leniz - API development
 
 ## Quickstart
