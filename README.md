@@ -139,7 +139,7 @@ Environment variables:
 
 | `SUMMARY_MODEL` | OpenAI model for summaries | `gpt-4o-mini` |
 
-| `BIAS_MODEL_NAME` | HF repo id or local path | `bucketresearch/politicalBiasBERT` |
+| `BIAS_MODEL_NAME` | HF repo id or local path | `Halfbendy/QbiasBERT` |
 
 | `ALLSIDES_PRIORS_PATH` | Path to AllSides priors CSV | `./data/allsides_priors.csv` |
 
