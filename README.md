@@ -57,7 +57,7 @@ Invoke-RestMethod -Method POST `
 - **Summarize** with GPT (OpenAI) when enabled — falls back to extractive summary of the first few sentences if not available
 - **Source prior** (optional): Look up the outlet’s AllSides media-bias rating (display only; does **not** affect the bias rating)
 - **Article bias**: Run `Halfbendy/qbias_model` to predict **Left / Center / Right**
-  - Returns `label`, `confidence`, and full per-class `probs`
+  - Returns `label`, `confidence`, and `probs`
   - Adds important keywords for user transparency -- **does not affect the model**
 
 
