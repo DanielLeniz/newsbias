@@ -139,7 +139,9 @@ Environment variables:
 
 | `SUMMARY_MODEL` | OpenAI model for summaries | `gpt-4o-mini` |
 
-| `BIAS_MODEL_NAME` | HF repo id or local path | `Halfbendy/QbiasBERT` |
+| `BIAS_MODEL_NAME` | HF repo id or local path | `Halfbendy/qbias_model` |
+
+| `BIAS_TOKENIZER_NAME` | Tokenizer | `google-bert/bert-base-cased` |
 
 | `ALLSIDES_PRIORS_PATH` | Path to AllSides priors CSV | `./data/allsides_priors.csv` |
 

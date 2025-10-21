@@ -26,20 +26,21 @@ ckpt_path = Path(CKPT)
 is_local_dir = ckpt_path.is_dir()
 
 # if user explicitly points to a local path but it doesn't exist, fail with error
-if os.getenv("BIAS_MODEL_NAME") and ckpt_path.is_absolute() and not is_local_dir:
+if os.getenv("BIAS_MODEL_NAME", "Halfbendy/qbias_model") and ckpt_path.is_absolute() and not is_local_dir:
     raise RuntimeError(f"Configured BIAS_MODEL_NAME points to a non-existent path: {CKPT}")
 
-# load tokenizer/model
+# tokenizer from base model
+TOKENIZER_ID = os.getenv("BIAS_TOKENIZER_NAME", "google-bert/bert-base-cased")
+
 tokenizer = AutoTokenizer.from_pretrained(
-    CKPT,
-    use_fast=True,
-    local_files_only=is_local_dir
+    TOKENIZER_ID,
+    use_fast=True
 )
+# trained model
 model = AutoModelForSequenceClassification.from_pretrained(
     CKPT,
     local_files_only=is_local_dir
 )
-
 # normalize label maps 
 id2label = getattr(model.config, "id2label", {})
 if id2label:

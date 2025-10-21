@@ -27,7 +27,7 @@ app.add_middleware(
 )
 
 # -------- Model  ----------
-CKPT_DIR  = os.getenv("BIAS_MODEL_NAME", "./checkpoints/qbias-roberta-base")
+CKPT_DIR  = os.getenv("BIAS_MODEL_NAME", "Halfbendy/qbias_model")
 TEMP_PATH = os.path.join(CKPT_DIR, "temperature.json")
 EVAL_PATH = os.path.join(CKPT_DIR, "eval_summary.json")
 
