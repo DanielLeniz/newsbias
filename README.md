@@ -6,11 +6,19 @@ Detects article-level political bias (Left/Center/Right), summarizes the article
 - Daniel Leniz - API development
 
 ## Quickstart
+### To Run UI
+```bash
+cd newsbias/ui
+npm install    # install dependencies
+npm run dev    # start the local Vite dev server
+open localhost link printed in the terminal # ex: http://localhost:5173/
+```
+### Get Requirements and Env
 ```bash
 python -m venv .venv && source .venv/bin/activate
 # python3 -m venv .venv -- use this if you have python3
 # .venv/Scripts/activate -- use this instead if .venv/bin/activate does not work with your machine
-pip install -r requirements.txt
+pip install -r requirements.txt # install dependencies
 cp .env.example .env  # fill in API keys
 ```
 
@@ -48,7 +56,7 @@ Invoke-RestMethod -Method POST `
 - **Fetch** article text from a URL (`/fetch`, `/predict_url`)
 - **Summarize** with GPT (OpenAI) when enabled — falls back to extractive summary of the first few sentences if not available
 - **Source prior** (optional): Look up the outlet’s AllSides media-bias rating (display only; does **not** affect the bias rating)
-- **Article bias**: Run `bucketresearch/politicalBiasBERT` to predict **Left / Center / Right**
+- **Article bias**: Run `Halfbendy/qbias_model` to predict **Left / Center / Right**
   - Returns `label`, `confidence`, and full per-class `probs`
   - Adds important keywords for user transparency -- **does not affect the model**
 
@@ -121,7 +129,7 @@ curl -s -X POST http://127.0.0.1:8000/predict   -H 'Content-Type: application/js
     "source": "Fox News",
     "domain": "foxnews.com",
     "rating": "Right",
-    "origin": "AllSides"
+    "origin": "AllSides",
     "notes": "Outlet generally right-leaning"
   }
 }
@@ -157,7 +165,7 @@ CSV should include at least an outlet **name** (e.g., `source_name`) and **ratin
 1. **Fetch**: `httpx` downloads the page HTML; extractor gets the main text using `trafilatura`
 2. **Summarize**: If OpenAI is enabled, call the summarization model; otherwise, return an extractive summary based off the first few sentences of the article.
 3. **Source prior**: Lookup outlet in the AllSides CSV by domain and/or name
-4. **Classify**: Tokenize and run the bias model. Compute softmax:
+4. **Classify**: Tokenize and run the bias model
    - `label` = Left/Center/Right
    - `confidence` 
    - `probs` = prob for each L/C/R
