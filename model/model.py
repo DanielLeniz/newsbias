@@ -1,3 +1,5 @@
+#Based on https://huggingface.co/docs/transformers/en/training instructions
+
 from huggingface_hub import login
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer
@@ -17,9 +19,10 @@ dataset = load_dataset("csv", data_files="allsides_balanced_news_headlines-texts
 
 dataset = dataset.rename_column("bias_rating", "label")
 dataset_filtered = dataset.filter(lambda example: example['text'] is not None and example['text'] != "")
+dataset_shuffled = dataset_filtered['train'].shuffle(seed=42)
 #dataset_labeled = dataset_filtered['train'].align_labels_with_mapping(label2id, "label")
 
-dataset_split = dataset_filtered['train'].train_test_split(test_size=0.25)
+dataset_split = dataset_shuffled.train_test_split(test_size=0.15)
 
 #print(dataset_split['train'].num_rows)
 #print(dataset_split['test'].num_rows)
@@ -43,8 +46,8 @@ def tokenize(examples):
 dataset_mapped = dataset_mapped.map(tokenize, batched=True)
 
 
-small_train = dataset_mapped["train"].shuffle(seed=42).select(range(100))
-small_eval = dataset_mapped["test"].shuffle(seed=42).select(range(100))
+#small_train = dataset_mapped["train"].shuffle(seed=42).select(range(100))
+#small_eval = dataset_mapped["test"].shuffle(seed=42).select(range(100))
 
 
 model = AutoModelForSequenceClassification.from_pretrained("bucketresearch/politicalBiasBERT", num_labels=3)
