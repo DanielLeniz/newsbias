@@ -60,7 +60,7 @@ from .summarizer import USE_LLM as SUM_LLM, SUMMARY_MODEL as SUM_MODEL
 def env_debug():
     import torch
     return {
-        "device": "cuda" if torch.cuda.is_available() else "cpu",
+        "device": "cpu",
         "torch": torch.__version__,
         "summary_llm": SUM_LLM,
         "summary_model": SUM_MODEL,
@@ -74,7 +74,7 @@ def healthz():
 def env():
     import torch
     return EnvResponse(
-        device="cuda" if torch.cuda.is_available() else "cpu",
+        device= "cpu",
         torch=torch.__version__,
         cuda_available=bool(torch.cuda.is_available()),
         cuda_version=getattr(torch.version, "cuda", None),

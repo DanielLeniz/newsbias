@@ -8,11 +8,9 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 LABELS = ["Left", "Center", "Right"]
 
 BASE_DIR = Path(__file__).resolve().parent
-DEFAULT_CKPT_DIR = (BASE_DIR / "checkpoints" / "qbias-roberta-base").resolve()
 
-# allow either a HF repo id ("roberta-base")
-# or a local directory; detects which below
-CKPT = os.getenv("BIAS_MODEL_NAME", str(DEFAULT_CKPT_DIR))
+# HF repo id 
+CKPT = os.getenv("BIAS_MODEL_NAME")
 
 DEVICE = "cpu"
 

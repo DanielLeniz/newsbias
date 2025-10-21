@@ -6,7 +6,6 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 BIAS_MODEL_NAME = os.getenv("BIAS_MODEL_NAME", "")
 
 DATA_DIR = os.getenv("DATA_DIR", "data")
-STORE_PATH = os.path.join(DATA_DIR, "articles.jsonl")
 ALLSIDES_PRIORS_PATH = os.getenv("ALLSIDES_PRIORS_PATH", os.path.join(DATA_DIR, "allsides_priors.csv"))
 
 QBIAS_CSV = os.path.join(DATA_DIR, "./data/qbias_articles.csv")
