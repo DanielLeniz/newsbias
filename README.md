@@ -183,7 +183,7 @@ PYTHONPATH=. pytest -q
 If you see `ModuleNotFoundError: app`, run:
 
 ```bash
-BIAS_MODEL_NAME=bucketresearch/politicalBiasBERT PYTHONPATH=. pytest -q
+BIAS_MODEL_NAME=Halfbendy/qbias_model PYTHONPATH=. pytest -q
 ```
 
 ---
